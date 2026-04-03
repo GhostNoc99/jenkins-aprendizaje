@@ -12,7 +12,7 @@ pipeline {
             }
         }
     }
-    stages {
+    /*stages {
         stage('Info2') {
             steps {
                 echo "Nombre del Job: ${env.JOB_NAME}"
@@ -20,7 +20,7 @@ pipeline {
                 echo "URL del Build: ${env.BUILD_URL}"
                 echo "Rama: ${env.GIT_BRANCH}"
             }
-        }        
+        }*/        
         stage('Build') {
             steps {
                 echo 'Compilando el proyecto...'
