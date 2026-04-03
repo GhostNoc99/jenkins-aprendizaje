@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('Info') {
+            steps {
+                echo "Nombre del Job: ${env.JOB_NAME}"
+                echo "Numero de Build: ${env.BUILD_NUMBER}"
+                echo "URL del Build: ${env.BUILD_URL}"
+                echo "Rama: ${env.GIT_BRANCH}"
+            }
+        }        
         stage('Build') {
             steps {
                 echo 'Compilando el proyecto...'
