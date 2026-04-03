@@ -1,7 +1,19 @@
 pipeline {
     agent any
+    environment {
+        MI_APP = 'jenkins-aprendizaje'
+        VERSION = '1.0.0'
+        AMBIENTE = 'desarrollo'
+    }
     stages {
-        stage('Info') {
+        stage('Info1') {
+            steps {
+                echo "Desplegando ${MI_APP} version ${VERSION} en ${AMBIENTE}"
+            }
+        }
+    }
+    stages {
+        stage('Info2') {
             steps {
                 echo "Nombre del Job: ${env.JOB_NAME}"
                 echo "Numero de Build: ${env.BUILD_NUMBER}"
