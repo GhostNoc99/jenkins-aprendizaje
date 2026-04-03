@@ -50,4 +50,3 @@ pipeline {
             echo 'Algo salio mal!'
         }
     }
-}
