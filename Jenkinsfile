@@ -1,16 +1,21 @@
 pipeline {
     agent any
-    environment {
+    /*environment {
         MI_APP = 'jenkins-aprendizaje'
         VERSION = '1.0.0'
         AMBIENTE = 'desarrollo'
+    }*/
+    parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '¿Qué versión desplegar?')
+        choice(name: 'AMBIENTE', choices: ['desarrollo', 'staging', 'produccion'], description: '¿A qué ambiente?')
+        booleanParam(name: 'EJECUTAR_TESTS', defaultValue: true, description: '¿Correr pruebas?')
     }
     stages {
-        stage('Info1') {
+        /*stage('Info1') {
             steps {
                 echo "Desplegando ${MI_APP} version ${VERSION} en ${AMBIENTE}"
             }
-        }
+        }*/
     
         /*stages {
         stage('Info2') {
@@ -27,12 +32,20 @@ pipeline {
                 echo 'Compilando el proyecto... v2'
                 echo 'Compilando el proyecto... v3.1'
                 echo 'Build exitoso!'
+                echo "Desplegando version ${params.VERSION}"
+                echo "Ambiente: ${params.AMBIENTE}"
             }
         }
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas...'
                 echo 'Todas las pruebas pasaron!'
+                when {
+                expression { params.EJECUTAR_TESTS == true }
+                }
+                steps {
+                    echo "Ejecutando pruebas..."
+                }
             }
         }
         stage('Deploy') {
