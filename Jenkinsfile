@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'Compilando el proyecto...'
                 echo 'Compilando el proyecto... v2'
+                echo 'Compilando el proyecto... v3'
                 echo 'Build exitoso!'
             }
         }
