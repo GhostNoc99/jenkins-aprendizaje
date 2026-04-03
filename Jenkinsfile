@@ -41,13 +41,14 @@ pipeline {
                 echo 'Deploy exitoso!'
             }
         }
-        post {
-            success {
-                echo 'Pipeline completado exitosamente!'
-            }
-            failure {
-                echo 'Algo salio mal!'
-            }
+    }
+    post {
+        success {
+            echo 'Pipeline completado exitosamente!'
+        }
+        failure {
+            echo 'Algo salio mal!'
         }
     }
+    
 }
